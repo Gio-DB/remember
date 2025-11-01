@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Offline – Meine PWA</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+  <!-- Navigation (optional, funktioniert aber offline nicht) -->
+  <!-- Navigation -->
+  <div id="navbar"></div>
+  <script>
+    fetch('nav.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('navbar').innerHTML = html;
+      })
+      .catch(err => console.error('Error loading navigation:', err));
+  </script>
+
+  <!-- Hauptinhalt -->
+  <main>
+    <h1>Du bist offline</h1>
+    <p>Es scheint, dass du gerade keine Internetverbindung hast.</p>
+    <p>Die Inhalte sind möglicherweise nicht verfügbar. Bitte verbinde dich erneut mit dem Internet.</p>
+    <p><i class="fa fa-wifi" style="font-size:48px;color:red;"></i></p>
+  </main>
+
+</body>
+</html>

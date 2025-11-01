@@ -1,2 +1,1 @@
-# remember
-songs &amp; play
+# minimal-pwa

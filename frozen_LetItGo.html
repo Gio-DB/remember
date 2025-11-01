@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Remeber</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome für das Dropdown-Symbol -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- PWA Optimierungen: Manifest und Theme Color -->
+  <!-- <meta name="theme-color" content="#317EFB"> -->
+  <meta name="description" content="Modernes, responsives HTML Template — anpassbar und barrierearm."> 
+  <link rel="manifest" href="/remember/manifest.json">
+
+  
+  <!-- Favicons (optional) -->
+  <link rel="icon" href="pic/favicon.ico" />
+</head>
+
+<body>
+  <div class="wrap" role="document">
+    <!-- Navigation wird dynamisch geladen -->
+    <div id="nav-placeholder"></div>
+
+    <script>
+      // Navigation aus externer Datei laden
+      fetch('nav.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('nav-placeholder').innerHTML = data;
+        });
+    </script>
+
+
+    <!-- main -->
+    <main>
+      <section id="music-grid" aria-label="Music Learning Grid">
+
+        <!-- Karte 1 -->
+        <div class="feature feature-card music-card">
+          <h3 class="feature-title">Frozen – Let It Go</h3>
+          <div class="video-container">
+            <iframe src="https://www.youtube-nocookie.com/embed/L0MK7qz13bU?rel=0&modestbranding=1&controls=1&iv_load_policy=3&showinfo=0" 
+                    title="Frozen – Let It Go" 
+                    frameborder="0" 
+                    allow="autoplay; encrypted-media" 
+                    allowfullscreen></iframe>
+          </div>
+          <div class="feature-content">
+            <p class="muted lyrics-preview">
+              Lyrics:
+              <br>
+              The snow glows white on the mountain tonight...
+            </p>
+            <div class="lyrics-full muted">
+The snow glows white on the mountain tonight
+Not a footprint to be seen
+A kingdom of isolation
+And it looks like I'm the queen
+The wind is howling like this swirling storm inside
+Couldn't keep it in, heaven knows I tried
+Don't let them in, don't let them see
+Be the good girl you always have to be
+Conceal, don't feel, don't let them know
+Well, now they know
+Let it go, let it go
+Can't hold it back anymore
+Let it go, let it go
+Turn away and slam the door
+I don't care what they're going to say
+Let the storm rage on
+The cold never bothered me anyway
+It's funny how some distance makes everything seem small
+And the fears that once controlled me can't get to me at all
+It's time to see what I can do
+To test the limits and break through
+No right, no wrong, no rules for me
+I'm free
+Let it go, let it go
+I am one with the wind and sky
+Let it go, let it go
+You'll never see me cry
+Here I stand and here I stay
+Let the storm rage on
+My power flurries through the air into the ground
+My soul is spiraling in frozen fractals all around
+And one thought crystallizes like an icy blast
+I'm never going back, the past is in the past
+Let it go, let it go
+And I'll rise like the break of dawn
+Let it go, let it go
+That perfect girl is gone
+Here I stand in the light of day
+Let the storm rage on
+The cold never bothered me anyway
+            </div>
+            <button class="btn btn-small toggle-lyrics">Lyrics anzeigen</button>
+          </div>
+        </div>
+
+        <!-- Karte 2 -->
+        <div class="feature feature-card music-card">
+          <h3 class="feature-title">Song 2 Titel</h3>
+          <div class="video-container">
+            <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID_2?rel=0&modestbranding=1&controls=1&iv_load_policy=3&showinfo=0" 
+                    title="Song 2" 
+                    frameborder="0" 
+                    allow="autoplay; encrypted-media" 
+                    allowfullscreen></iframe>
+          </div>
+          <div class="feature-content">
+            <p class="muted lyrics-preview">
+              Lyrics:
+              <br>
+              …erste Zeilen hier…
+            </p>
+            <div class="lyrics-full muted">
+              …komplette Lyrics für Song 2 hier…
+            </div>
+            <button class="btn btn-small toggle-lyrics">Lyrics anzeigen</button>
+          </div>
+        </div>
+
+        <!-- Karte 3 -->
+        <div class="feature feature-card music-card">
+          <h3 class="feature-title">Song 3 Titel</h3>
+          <div class="video-container">
+            <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID_3?rel=0&modestbranding=1&controls=1&iv_load_policy=3&showinfo=0" 
+                    title="Song 3" 
+                    frameborder="0" 
+                    allow="autoplay; encrypted-media" 
+                    allowfullscreen></iframe>
+          </div>
+          <div class="feature-content">
+            <p class="muted lyrics-preview">
+              Lyrics:
+              <br>
+              …erste Zeilen hier…
+            </p>
+            <div class="lyrics-full muted">
+              …komplette Lyrics für Song 3 hier…
+            </div>
+            <button class="btn btn-small toggle-lyrics">Lyrics anzeigen</button>
+          </div>
+        </div>
+
+        <!-- Karte 4 -->
+        <div class="feature feature-card music-card">
+          <h3 class="feature-title">Song 4 Titel</h3>
+          <div class="video-container">
+            <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID_4?rel=0&modestbranding=1&controls=1&iv_load_policy=3&showinfo=0" 
+                    title="Song 4" 
+                    frameborder="0" 
+                    allow="autoplay; encrypted-media" 
+                    allowfullscreen></iframe>
+          </div>
+          <div class="feature-content">
+            <p class="muted lyrics-preview">
+              Lyrics:
+              <br>
+              …erste Zeilen hier…
+            </p>
+            <div class="lyrics-full muted">
+              …komplette Lyrics für Song 4 hier…
+            </div>
+            <button class="btn btn-small toggle-lyrics">Lyrics anzeigen</button>
+          </div>
+        </div>
+
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo" id="kontakt">
+      © <span id="year"></span> Dein Name — <span class="muted">Made with ♥</span>
+      
+      <!-- Installations-Button (zuerst ausgeblendet) -->
+      <button id="installBtn" hidden>📲 App installieren</button>
+
+    </footer>
+
+  <!-- Minimal JS: Menü + Formular (progressive enhancement) -->
+ <script src="JavaScript.js"></script>
+</body>
+</html>

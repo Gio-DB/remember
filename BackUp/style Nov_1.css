@@ -1,0 +1,205 @@
+/* =====================================================
+   LAYOUT & ALLGEMEINES
+===================================================== */
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4;
+  margin: 0;
+  padding: 2px;
+}
+
+h1, h2, h3 {
+  color: #2c3e50;
+  margin-top: 1.2em;
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  padding: 15px 20px;
+}
+
+.spacing {
+  margin: 30px 0;
+}
+
+/* --- Responsives Design --- */
+@media (max-width: 768px) {
+  section {
+    padding: 10px 15px;
+  }
+}
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+.navbar {
+  background-color: #333;
+  overflow: hidden;
+}
+
+.navbar a,
+.dropdown .dropbtn {
+  background-color: inherit;
+  border: none;
+  color: white;
+  cursor: pointer;
+  float: left;
+  font-family: inherit;
+  font-size: 16px;
+  margin: 0;
+  outline: none;
+  padding: 14px 16px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.navbar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.navbar a:hover,
+.dropdown:hover .dropbtn {
+  background-color: #c62828;
+}
+
+/* --- Dropdown-Menü --- */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown-content {
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  display: none;
+  min-width: 160px;
+  position: absolute;
+  z-index: 1;
+  top: 48px; /* <— füge diese Zeile hinzu */
+}
+
+.dropdown-content a {
+  color: #333;
+  display: block;
+  float: none;
+  padding: 12px 16px;
+  text-align: left;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* =====================================================
+   INHALT & LINKS
+===================================================== */
+.example {
+  font-style: italic;
+  margin-left: 10px;
+}
+
+.link-icon {
+  color: #004080;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-left: 6px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.topic-link {
+  color: #003acd;
+  font-weight: 600;
+  position: relative;
+  text-decoration: none;
+}
+
+.topic-link:hover {
+  color: #2d92f7;
+  text-decoration: underline;
+}
+
+.topic-link:hover .link-icon {
+  color: #002f66;
+  transform: translateX(4px);
+}
+
+/* =====================================================
+   TYPOGRAFIE & DETAILS
+===================================================== */
+em.bsp {
+  color: #555;
+  display: inline; /* kein Zeilenumbruch */
+  font-size: 0.9em;
+  margin-left: 6px;
+}
+
+mark {
+  background-color: #fffa65;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+ul {
+  margin-left: 15px;
+  padding-left: 10px;
+}
+
+/* =====================================================
+   Tabelle
+===================================================== */
+/* Tabellen-Grundformat */
+.pronomen-table {
+  border-collapse: collapse;
+  width: auto;           /* Breite passt sich dem Inhalt an */
+  max-width: 800px;      /* Begrenzung auf Desktop */
+  margin: 0 0 20px 0;    /* Abstand unten, linksbündig */
+  font-size: 0.95rem;    /* etwas kompakter */
+}
+
+.pronomen-table th,
+.pronomen-table td {
+  border: 1px solid #000;
+  padding: 4px 8px;      /* vertikal+horizontal etwas Luft */
+  text-align: left;
+  white-space: nowrap;   /* verhindert, dass Inhalte umbrechen */
+}
+
+.pronomen-table caption {
+  caption-side: top;    /* bleibt oben */
+  text-align: left;     /* linksbündig */
+  font-weight: bold;
+  margin-bottom: 4px;   /* Abstand zur Tabelle */
+}
+
+/* Header-Farben nach Kasus */
+.pronomen-table th.nom,
+.pronomen-table td.nom { background-color: #ccffcc; }   /* Nominativ */
+.pronomen-table th.akk,
+.pronomen-table td.akk { background-color: #cce0ff; }   /* Akkusativ */
+.pronomen-table th.dat,
+.pronomen-table td.dat { background-color: #ffcccc; }   /* Dativ */
+.pronomen-table th.gen,
+.pronomen-table td.gen { background-color: #ffffcc; }   /* Genitiv */
+
+/* Scrollbare Tabelle auf kleinen Bildschirmen */
+.table-container {
+  overflow-x: auto;
+}
+
+
+

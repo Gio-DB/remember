@@ -172,7 +172,7 @@ nav a:hover, nav a:focus{
 /* Cards grid and components */
 .grid-2{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:repeat(1,1fr);
   gap:1rem;
 }
 /* Feature Cards (Bild oben, Text mitte, Link unten) */

@@ -25,12 +25,20 @@
     <div id="nav-placeholder"></div>
 
     <script>
-      // Navigation aus externer Datei laden
+      // Navigation aus externer Datei laden und Event dispatchen, wenn fertig
       fetch('nav.html')
         .then(response => response.text())
         .then(data => {
           document.getElementById('nav-placeholder').innerHTML = data;
-        });
+          try {
+            window.dispatchEvent(new Event('navLoaded'));
+          } catch (err) {
+            var ev = document.createEvent('Event');
+            ev.initEvent('navLoaded', true, true);
+            window.dispatchEvent(ev);
+          }
+        })
+        .catch(err => console.error('Fehler beim Laden der Navigation:', err));
     </script>
 
 

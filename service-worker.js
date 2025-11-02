@@ -10,7 +10,8 @@ const urlsToCache = [
   "/remember/pic/icon-192.png",
   "/remember/pic/icon-512.png",
   "/remember/pic/icon-192-maskable.png",
-  "/remember/pic/icon-512-maskable.png"
+  "/remember/pic/icon-512-maskable.png",
+  "/remember/y_LuSongs.html"
 ];
 
 

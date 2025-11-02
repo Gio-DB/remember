@@ -1,152 +1,178 @@
 <!doctype html>
 <html lang="de">
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Remeber</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Font Awesome für das Dropdown-Symbol -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Remember</title>
 
-  <!-- PWA Optimierungen: Manifest und Theme Color -->
-  <!-- <meta name="theme-color" content="#317EFB"> -->
-  <meta name="description" content="Modernes, responsives HTML Template — anpassbar und barrierearm."> 
-  <link rel="manifest" href="/remember/manifest.json">
+    <!-- Styles + Icons -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-  
-  <!-- Favicons (optional) -->
-  <link rel="icon" href="pic/favicon.ico" />
-</head>
+    <!-- PWA -->
+    <meta name="description" content="Modernes, responsives HTML Template — anpassbar und barrierearm." />
+    <link rel="manifest" href="/remember/manifest.json" />
 
-<body>
-  <div class="wrap" role="document">
-    <!-- Navigation wird dynamisch geladen -->
-    <div id="nav-placeholder"></div>
+    <!-- Favicon (optional) -->
+    <link rel="icon" href="pic/favicon.ico" />
+  </head>
 
-    <script>
-      // Navigation aus externer Datei laden
-      fetch('nav.html')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('nav-placeholder').innerHTML = data;
-        });
-    </script>
+  <body>
+    <div class="wrap" role="document">
 
+      <!-- Navigation (externes Template) -->
+      <div id="nav-placeholder"></div>
 
-    <!-- Hero -->
-    <main id="home" class="hero" role="main" aria-labelledby="headline">
-      <section class="card intro" aria-labelledby="headline">
-        <h1 id="headline">Ein sauberes, responsives HTML-Template</h1>
-        <p class="lead">Schnell anpassbar — mit Fokus auf Lesbarkeit, Barrierefreiheit und responsivem Layout. Nutze dieses Template als Startpunkt für deine Projekte.</p>
+      <script>
+        // Navigation aus externer Datei laden und ein Event dispatchen, wenn fertig.
+        // Das hilft, dass Skripte (z. B. Menü-Initialisierung) wissen, wann die Nav im DOM ist.
+        fetch('nav.html')
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById('nav-placeholder').innerHTML = data;
+            try {
+              window.dispatchEvent(new Event('navLoaded'));
+            } catch (err) {
+              // Fallback für ältere Browser
+              var ev = document.createEvent('Event');
+              ev.initEvent('navLoaded', true, true);
+              window.dispatchEvent(ev);
+            }
+          })
+          .catch(err => console.error('Fehler beim Laden der Navigation:', err));
+      </script>
 
-        <div style="display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:1rem">
-          <a class="btn" href="#features">Loslegen</a>
-          <a class="btn" href="#kontakt" style="background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text);font-weight:700">Kontakt</a>
+      <!-- Hauptinhalt / Hero -->
+      <main id="home" class="hero" role="main" aria-labelledby="headline">
+
+        <section class="card intro" aria-labelledby="headline">
+          <h1 id="headline">Ein sauberes, responsives HTML-Template</h1>
+          <p class="lead">Schnell anpassbar — mit Fokus auf Lesbarkeit, Barrierefreiheit und responsivem Layout.</p>
+
+          <div style="display:flex; gap:0.6rem; flex-wrap:wrap; margin-bottom:1rem">
+            <a class="btn" href="#features">Loslegen</a>
+            <a class="btn" href="#kontakt" style="background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--text); font-weight:700">Kontakt</a>
+          </div>
+
+          <div class="grid-2" id="features" aria-label="Feature Übersicht">
+            <!-- Feature Cards (Beispiele) -->
+            <div class="feature feature-card">
+              <img src="https://img.youtube.com/vi/L0MK7qz13bU/hqdefault.jpg" alt="Frozen – Let It Go" class="feature-image" />
+              <div class="feature-content">
+                <strong>Responsiv</strong>
+                <p class="muted">Grid-Layout, mobile Menü und fließende Typographie.</p>
+              </div>
+              <a href="y_LuSongs.html" class="feature-link">See more →</a>
+            </div>
+
+            <div class="feature feature-card">
+              <img src="pic/feature2.jpg" alt="Barrierearm" class="feature-image" />
+              <div class="feature-content">
+                <strong>Barrierearm</strong>
+                <p class="muted">Semantische Tags, ARIA-Attribute und sichtbare Fokuszustände.</p>
+              </div>
+              <a href="#barrierearm" class="feature-link">See more →</a>
+            </div>
+
+            <div class="feature feature-card">
+              <img src="pic/feature3.jpg" alt="Erweiterbar" class="feature-image" />
+              <div class="feature-content">
+                <strong>Leicht erweiterbar</strong>
+                <p class="muted">Einfache CSS-Variablen und modulare Komponenten.</p>
+              </div>
+              <a href="#erweiterbar" class="feature-link">See more →</a>
+            </div>
+
+            <div class="feature feature-card">
+              <img src="pic/feature4.jpg" alt="Performance" class="feature-image" />
+              <div class="feature-content">
+                <strong>Performance</strong>
+                <p class="muted">Keine externen Bibliotheken nötig — schnell und schlank.</p>
+              </div>
+              <a href="#performance" class="feature-link">See more →</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Sidebar / Quick-Info -->
+        <aside class="card" aria-labelledby="quick">
+          <h3 id="quick" style="margin-top:0">Schnellstart</h3>
+          <ol class="muted" style="margin:0; padding-left:1rem">
+            <li>Speichere als <code>index.html</code></li>
+            <li>Ändere Farben unter <code>:root</code></li>
+            <li>Füge dein Logo in den Link mit Klasse <code>brand</code> ein</li>
+            <li>Für Mehrseiten: kopiere Header / Footer in neue Dateien</li>
+          </ol>
+
+          <hr style="margin:1rem 0; border:0; height:1px; background:linear-gradient(90deg,transparent,var(--glass),transparent)" />
+
+          <h4 style="margin-bottom:0.4rem">Kontaktformular</h4>
+          <form id="contactForm" onsubmit="handleContact(event)" aria-label="Kontaktformular">
+            <label class="muted" for="name">Name</label>
+            <input id="name" name="name" required placeholder="Dein Name" />
+
+            <label class="muted" for="email" style="margin-top:0.6rem">E-Mail</label>
+            <input id="email" name="email" type="email" required placeholder="name@example.com" />
+
+            <label class="muted" for="message" style="margin-top:0.6rem">Nachricht</label>
+            <textarea id="message" name="message" rows="4" required placeholder="Deine Nachricht"></textarea>
+
+            <div style="margin-top:0.6rem; display:flex; gap:0.6rem">
+              <button class="btn" type="submit">Senden</button>
+              <button type="reset" style="background:transparent; border:1px solid rgba(255,255,255,0.04); padding:0.5rem 0.8rem; border-radius:8px; color:var(--muted)">Zurücksetzen</button>
+            </div>
+          </form>
+        </aside>
+      </main>
+
+      <!-- Beispiel: Dokumentation & Tabelle -->
+      <section class="card" aria-labelledby="docs" id="docs">
+        <h2 id="docs" style="margin-top:0">Dokumentation &amp; Beispiele</h2>
+        <p class="muted">Hier ein kleines Beispiel für eine Datentabelle:</p>
+
+        <div style="overflow:auto">
+          <table aria-label="Beispiel Tabelle">
+            <thead>
+              <tr>
+                <th>Projekt</th>
+                <th>Status</th>
+                <th>Fertig</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Landingpage</td>
+                <td>In Arbeit</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>Dokumentation</td>
+                <td>Fertig</td>
+                <td>14.10.2025</td>
+              </tr>
+              <tr>
+                <td>Tests</td>
+                <td>Geplant</td>
+                <td>—</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-
-        <div class="grid-2" id="features" aria-label="Feature Übersicht">
-
-          <div class="feature feature-card">
-            <img src="https://img.youtube.com/vi/L0MK7qz13bU/hqdefault.jpg" alt="Frozen – Let It Go" class="feature-image">
-            <div class="feature-content">
-              <strong>Responsiv</strong>
-              <p class="muted">Grid-Layout, mobile Menü und fließende Typographie.</p>
-            </div>
-            <a href="frozen_LetItGo.html" class="feature-link">See more →</a>
-          </div>
-
-          <div class="feature feature-card">
-            <img src="pic/feature2.jpg" alt="Barrierearm" class="feature-image">
-            <div class="feature-content">
-              <strong>Barrierearm</strong>
-              <p class="muted">Semantische Tags, ARIA-Attribute und sichtbare Fokuszustände.</p>
-            </div>
-            <a href="#barrierearm" class="feature-link">See more →</a>
-          </div>
-
-          <div class="feature feature-card">
-            <img src="pic/feature3.jpg" alt="Erweiterbar" class="feature-image">
-            <div class="feature-content">
-              <strong>Leicht erweiterbar</strong>
-              <p class="muted">Einfache CSS-Variablen und modulare Komponenten.</p>
-            </div>
-            <a href="#erweiterbar" class="feature-link">See more →</a>
-          </div>
-
-          <div class="feature feature-card">
-            <img src="pic/feature4.jpg" alt="Performance" class="feature-image">
-            <div class="feature-content">
-              <strong>Performance</strong>
-              <p class="muted">Keine externen Bibliotheken nötig — schnell und schlank.</p>
-            </div>
-            <a href="#performance" class="feature-link">See more →</a>
-          </div>
-
-        </div>
-
       </section>
 
-      <!-- Sidebar / Quick-Info -->
-      <aside class="card" aria-labelledby="quick">
-        <h3 id="quick" style="margin-top:0">Schnellstart</h3>
-        <ol class="muted" style="margin:0;padding-left:1rem">
-          <li>Speichere als <code>index.html</code></li>
-          <li>Ändere Farben unter <code>:root</code></li>
-          <li>Füge dein Logo in den Link mit Klasse <code>brand</code> ein</li>
-          <li>Für Mehrseiten: kopiere Header / Footer in neue Dateien</li>
-        </ol>
+      <!-- Footer -->
+      <footer role="contentinfo" id="kontakt">
+        © <span id="year"></span> Dein Name — <span class="muted">Made with ♥</span>
 
-        <hr style="margin:1rem 0;border:0;height:1px;background:linear-gradient(90deg,transparent,var(--glass),transparent)">
+        <!-- Installations-Button (zuerst ausgeblendet) -->
+        <button id="installBtn" hidden>📲 App installieren</button>
+      </footer>
 
-        <h4 style="margin-bottom:0.4rem">Kontaktformular</h4>
-        <form id="contactForm" onsubmit="handleContact(event)" aria-label="Kontaktformular">
-          <label class="muted" for="name">Name</label>
-          <input id="name" name="name" required placeholder="Dein Name">
+    </div> <!-- .wrap -->
 
-          <label class="muted" for="email" style="margin-top:0.6rem">E-Mail</label>
-          <input id="email" name="email" type="email" required placeholder="name@example.com">
+    <!-- Projekt-spezifisches JS (progressive enhancement) -->
+    <script src="JavaScript.js"></script>
+  </body>
 
-          <label class="muted" for="message" style="margin-top:0.6rem">Nachricht</label>
-          <textarea id="message" name="message" rows="4" required placeholder="Deine Nachricht"></textarea>
-
-          <div style="margin-top:0.6rem;display:flex;gap:0.6rem">
-            <button class="btn" type="submit">Senden</button>
-            <button type="reset" style="background:transparent;border:1px solid rgba(255,255,255,0.04);padding:0.5rem 0.8rem;border-radius:8px;color:var(--muted)">Zurücksetzen</button>
-          </div>
-        </form>
-      </aside>
-    </main>
-
-    <!-- Example content block -->
-    <section class="card" aria-labelledby="docs" id="docs">
-      <h2 id="docs" style="margin-top:0">Dokumentation & Beispiele</h2>
-      <p class="muted">Hier ein kleines Beispiel für eine Datentabelle:</p>
-
-      <div style="overflow:auto">
-        <table aria-label="Beispiel Tabelle">
-          <thead>
-            <tr><th>Projekt</th><th>Status</th><th>Fertig</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Landingpage</td><td>In Arbeit</td><td>—</td></tr>
-            <tr><td>Dokumentation</td><td>Fertig</td><td>14.10.2025</td></tr>
-            <tr><td>Tests</td><td>Geplant</td><td>—</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer role="contentinfo" id="kontakt">
-      © <span id="year"></span> Dein Name — <span class="muted">Made with ♥</span>
-      
-      <!-- Installations-Button (zuerst ausgeblendet) -->
-      <button id="installBtn" hidden>📲 App installieren</button>
-
-    </footer>
-
-  <!-- Minimal JS: Menü + Formular (progressive enhancement) -->
- <script src="JavaScript.js"></script>
-</body>
 </html>
